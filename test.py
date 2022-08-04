@@ -5,7 +5,7 @@ from unittest.mock import patch
 from cast_from_env import from_env
 
 
-class XMLTests(TestCase):
+class UnitTests(TestCase):
 
     @patch.dict(environ, {'TEST_STR': 'a string', 'TEST_INT': '123', 'TEST_FLOAT': '12.34',
                           'TEST_TRUE': 'true', 'TEST_FALSE': 'no'})
