@@ -10,6 +10,6 @@ def from_env(name, default=None):
     else:
         cast = type(default)
     value = getenv(name, default)
-    if cast is bool:
+    if cast is bool and type(value) is str:
         return value is not None and value.lower() in ('1', 't', 'true', 'y', 'yes', 'on')
     return None if value is None else cast(value)

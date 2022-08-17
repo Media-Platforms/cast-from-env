@@ -17,3 +17,4 @@ class UnitTests(TestCase):
         assert type(from_env('TEST_FLOAT', float)) is float, 'Env var is cast to float'
         assert from_env('TEST_TRUE', bool) is True, '"true" cast to bool is True'
         assert from_env('TEST_FALSE', True) is False, '"no" cast to bool is False'
+        assert from_env('TEST_UNSET', True) is True, 'unset var cast to bool returns default'
