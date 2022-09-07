@@ -1,3 +1,4 @@
+from json import loads
 from os import environ
 from unittest import TestCase
 from unittest.mock import patch
@@ -8,7 +9,7 @@ from cast_from_env import from_env
 class UnitTests(TestCase):
 
     @patch.dict(environ, {'TEST_STR': 'a string', 'TEST_INT': '123', 'TEST_FLOAT': '12.34',
-                          'TEST_TRUE': 'true', 'TEST_FALSE': 'no'})
+                          'TEST_TRUE': 'true', 'TEST_FALSE': 'no', 'TEST_JSON': '["this", 3, 2]'})
     def test_from_env(self):
         assert from_env('NOT_SET') is None, 'Unset env var returns None if no default'
         assert from_env('NOT_SET', 'default') == 'default', 'Unset env var returns default'
@@ -18,3 +19,4 @@ class UnitTests(TestCase):
         assert from_env('TEST_TRUE', bool) is True, '"true" cast to bool is True'
         assert from_env('TEST_FALSE', True) is False, '"no" cast to bool is False'
         assert from_env('TEST_UNSET', True) is True, 'unset var cast to bool returns default'
+        assert from_env('TEST_JSON', loads) == ['this', 3, 2], 'JSON string is cast to array'

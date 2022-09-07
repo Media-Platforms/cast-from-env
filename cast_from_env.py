@@ -3,7 +3,7 @@ from os import getenv
 
 def from_env(name, default=None):
     """Get an environment variable's value and cast it to match the default, or a given type."""
-    if type(default) is type:
+    if callable(default):
         cast, default = default, None
     elif default is None:
         cast = str
