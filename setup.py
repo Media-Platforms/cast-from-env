@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='cast_from_env',
-    version='0.0.7',
+    version='0.0.8',
     description='Get and cast environment variables',
     author='Nic Wolff',
     author_email='nwolff@hearst.com',
